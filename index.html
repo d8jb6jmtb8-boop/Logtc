@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Démo Carte Prépayée</title>
+
+<style>
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background: #f4f4f4;
+    color: #252525;
+}
+
+header {
+    background: #d71920;
+    color: white;
+    padding: 22px;
+    text-align: center;
+}
+
+header h1 {
+    font-size: 25px;
+    letter-spacing: 1px;
+}
+
+header p {
+    margin-top: 6px;
+    font-size: 13px;
+}
+
+.container {
+    max-width: 420px;
+    margin: 35px auto;
+    padding: 20px;
+}
+
+.card {
+    background: white;
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 5px 20px #00000012;
+}
+
+.badge {
+    display: inline-block;
+    background: #fff0f0;
+    color: #d71920;
+    padding: 7px 10px;
+    border-radius: 5px;
+    font-size: 11px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+h2 {
+    font-size: 21px;
+    margin-bottom: 10px;
+}
+
+.description {
+    color: #777;
+    font-size: 14px;
+    line-height: 1.5;
+    margin-bottom: 25px;
+}
+
+label {
+    display: block;
+    font-size: 13px;
+    font-weight: bold;
+    margin: 15px 0 7px;
+}
+
+input {
+    width: 100%;
+    padding: 13px;
+    border: 1px solid #ddd;
+    border-radius: 7px;
+    font-size: 16px;
+    outline: none;
+}
+
+input:focus {
+    border-color: #d71920;
+}
+
+button {
+    width: 100%;
+    background: #d71920;
+    color: white;
+    border: none;
+    border-radius: 7px;
+    padding: 15px;
+    margin-top: 22px;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #b51218;
+}
+
+.result {
+    display: none;
+    margin-top: 22px;
+    padding: 20px;
+    border: 1px solid #f0caca;
+    background: #fff7f7;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.result small {
+    color: #777;
+}
+
+.amount {
+    color: #d71920;
+    font-size: 32px;
+    font-weight: bold;
+    margin: 12px 0;
+}
+
+.notice {
+    color: #777;
+    font-size: 12px;
+    line-height: 1.5;
+    margin-top: 18px;
+    text-align: center;
+}
+
+footer {
+    text-align: center;
+    color: #999;
+    font-size: 12px;
+    padding: 20px;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <h1>CARTE PRÉPAYÉE</h1>
+    <p>Interface de démonstration</p>
+</header>
+
+<div class="container">
+    <div class="card">
+
+        <span class="badge">MODE SIMULATION</span>
+
+        <h2>Consulter une carte</h2>
+
+        <p class="description">
+            Entre un identifiant de démonstration pour afficher
+            le résultat de la simulation.
+        </p>
+
+        <form id="demoForm">
+            <label for="reference">Identifiant de démonstration</label>
+            <input
+                id="reference"
+                type="text"
+                placeholder="Ex. DEMO-1234"
+                required
+            >
+
+            <button type="submit">Afficher le résultat</button>
+        </form>
+
+        <div class="result" id="result" aria-live="polite">
+            <small>SOLDE FICTIF DE DÉMONSTRATION</small>
+            <div class="amount" id="amount">25 000,00 €</div>
+            <p>Résultat simulé — aucun compte bancaire consulté.</p>
+        </div>
+
+        <p class="notice">
+            Maquette à but illustratif uniquement.
+            Ce site ne vérifie aucune carte réelle et ne donne
+            accès à aucun solde bancaire.
+        </p>
+
+    </div>
+</div>
+
+<footer>
+    Démonstration indépendante — aucune affiliation avec Transcash.
+</footer>
+
+<script>
+const form = document.getElementById("demoForm");
+const result = document.getElementById("result");
+const reference = document.getElementById("reference");
+
+form.addEventListener("submit", function(event) {
+    event.preventDefault();
+
+    if (!reference.value.trim()) {
+        return;
+    }
+
+    result.style.display = "block";
+});
+</script>
+
+</body>
+</html>
